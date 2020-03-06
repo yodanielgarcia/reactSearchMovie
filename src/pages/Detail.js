@@ -1,9 +1,15 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import service from '../service/Services'
+
 export class Detail extends Component {
     static propTypes = {
-        id: PropTypes.string
+        match: PropTypes.shape({
+            params: PropTypes.object,
+            isExact: PropTypes.bool,
+            path: PropTypes.string,
+            url: PropTypes.string
+        })
     }
 
     state = { movie: {} }
@@ -19,7 +25,7 @@ export class Detail extends Component {
     }
     
     componentDidMount () {
-        let {id} = this.props
+        let {id} = this.props.match.params
         this._fetchMovie({id})
     }
 
@@ -27,7 +33,7 @@ export class Detail extends Component {
         let {Title, Poster, Actors, Metascore, Plot} = this.state.movie
         return (
             <div>
-                <button onClick={this._goBack}></button>
+                <button onClick={this._goBack}>back</button>
                 <h1>{Title}</h1>
                 <img src={Poster} alt='tal'></img>
                 <h3>{Actors}</h3>

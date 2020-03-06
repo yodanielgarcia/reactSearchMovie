@@ -12,7 +12,7 @@ export class SearchForm extends Component {
     _handleSubmit = (e) => {
         e.preventDefault()
         service.getRequest('s='+ this.state.inputMovie).then(value => {
-            let {Search = [], totalResults = "0"} = value
+            let {Search = []} = value
             this.props.onResults(Search)
         })        
     }
