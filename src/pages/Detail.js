@@ -15,7 +15,9 @@ export class Detail extends Component {
     state = { movie: {} }
 
     _fetchMovie ({ id }){
-        service.getRequest('i='+ this.props.id).then(movie => {
+        service.getRequest('i='+ id).then(movie => {
+            console.log(movie);
+            
             this.setState({movie})           
         })  
     }
